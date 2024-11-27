@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Calculator.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Calculator.Commands
 {
-    public class StoreNumber
+    public class StoreNumber : ViewModelBase
     {
         public static int x { get; set; }
 
@@ -19,6 +21,11 @@ namespace Calculator.Commands
         public static int calculationType {  get; set; }
 
         public static string calculationDisplay { get; set; }
+
+        
+
+        
+
 
 
     }
