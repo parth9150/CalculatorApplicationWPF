@@ -1,9 +1,11 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Calculator.Commands;
 namespace Calculator.ViewModels
 {
     internal class CalculatorViewModel : ViewModelBase 
     {
+
 
 		public RelayCommand StoreNumberCommand => new RelayCommand(param =>
 		{
@@ -21,12 +23,20 @@ namespace Calculator.ViewModels
 		});
 
 
-		public RelayCommand CalculateCommand => new RelayCommand(execute => DisplayCalculation = _relayCommandFunctions.CalculationCommand());
+		public RelayCommand CalculateCommand => new RelayCommand(execute => 
+		{
+			DisplayCalculation = _relayCommandFunctions.CalculationCommand();
+			History.Add(DisplayCalculation);
 
+		});
 
+        public RelayCommand Clear => new RelayCommand(execute => 
+		{ 
+			_relayCommandFunctions.clearCommand();
+			DisplayCalculation = string.Empty;
+		});
 
-
-		public ICommand StoreFunction { get; set; }
+        public ICommand StoreFunction { get; set; }
 
 		
 
@@ -34,6 +44,8 @@ namespace Calculator.ViewModels
 		public StoreNumber StoreNumber { get;}
 
 		private readonly RelayCommandFunctions _relayCommandFunctions;
+
+		public ObservableCollection <string> History { get;}
 
 		public CalculatorViewModel () 
 		{
@@ -43,7 +55,7 @@ namespace Calculator.ViewModels
 
 			StoreFunction = new StoreFunctionCommand();
 
-			
+			History = new ObservableCollection<string>();
 
 			_relayCommandFunctions = new RelayCommandFunctions();
 

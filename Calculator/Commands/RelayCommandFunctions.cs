@@ -104,6 +104,14 @@ namespace Calculator.Commands
 
            return DisplayCalculationFunction();
         }
+
+        public void clearCommand()
+        {
+            StoreNumber.x = 0;
+            StoreNumber.y = 0;
+            StoreNumber.xyFlag = 0;
+            StoreNumber.calculationDisplay = string.Empty;
+        }
        
     }
 }

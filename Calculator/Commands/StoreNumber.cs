@@ -22,11 +22,6 @@ namespace Calculator.Commands
 
         public static string calculationDisplay { get; set; }
 
-        
-
-        
-
-
 
     }
 }

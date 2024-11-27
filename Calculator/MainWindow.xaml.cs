@@ -19,7 +19,7 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
     }
 }
